@@ -1,0 +1,178 @@
+% arara: clean: { files: [cv.aux , cv.log]}
+% arara: xelatex
+% arara: xelatex
+% arara: clean: {extensions: [aux,toc,vrb,snm,blg,bcf,bbl,out,aux,lof,lot,xml,log,run.xml,el,nav]}
+
+%%%%%% run compilation as follows:
+%%% while true ; do inotifywait -rq --event modify . ; arara cv.tex ; done
+%%% and check the log file for errors
+%%% watch -n 3 tail -n 50 cv.log
+
+\documentclass{muratcan_cv}
+
+
+\setname{Dylan}{Festa}
+\setmail{dylan.festa@~$\large[$tum.de \emph{or} gmail.com $\large]$}
+\setmobile{+49~(0)~176~85453368}
+\setgithubaccountlink{https://github.com/dylanfesta}
+\setgithubaccountname{github.com/dylanfesta}
+\settwitterlink{https://x.com/dylanfesta}
+\settwittername{dylanfesta}
+
+\setthemecolor{ForestGreen} %you can play with color of the template (red is also nice..)
+
+\begin{document}
+%Set variables
+%You can add sections, texts, explanations just by copying the style below. Replace the dummy texts "\lipsum[1][x-x]\par" with actual texts.
+%Create header
+\headerview
+
+\vspace{1ex}
+%Sections
+%
+% Summary
+% \addblocktext{Current Position}{%
+% \datedexperience{Postdoctoral Researcher}{2021-present}
+% \explanation{Gjorgjieva group, Max Plank Institute for Brain Research, Frankfurt am Main, Germany.}
+% \explanationdetail{I do stuff}
+% }
+% %
+\section{Current Position}{%
+ \datedexperience{Postdoctoral Researcher}{2021-present}
+ \explanation{Lab of Prof.~Julijana Gjorgjieva, School of Life Science, Technical University of Munich $\large($TUM$\large)$, Germany.}
+\explanationdetail{
+ \coloredbullet\ %
+   Using both numerical and analytic approaches, I study how inhibitory spike-timing dependent plasticity rules can ensure excitatory/inhibitory balance, while also generating specific connectivity structures in recurrent circuits. I also mentor students taking part in internships, with projects related to plasticity and neural dynamics, and help as  teaching assistant (Computational neuroscience course, Master of Science in Neuroengineering, TUM).}
+ }
+%
+\section{Research Experience}{%
+ \datedexperience{Postdoctoral Researcher}{2016-2021}
+ \explanation{Lab of Dr.~Ruben Coen-Cagli, Albert Einstein College of Medicine, Bronx, NY, USA}
+ \explanationdetail{
+ \coloredbullet\ %
+  I  developed a probabilistic inference model tuned to natural image statistics, to make predictions on both mean response and trial-to-trial response variability of neurons in primary visual cortex (V1). Computationally, I reimplemented and extended the model of interest, finding new results that I used for both analytical studies and numerical simulations. In parallel to this, I worked in close collaboration with experimentalists in the laboratory of Prof.~Adam Kohn group, to test the theory using both existing data and new experiments. I contributed to both stimulus design and data analysis (including spike-sorting).
+ }
+%
+  \datedexperience{Ph.D.~Studies}{2012-2016}
+ \explanation{Group of Prof. M\'at\'e Lengyel, Computational and Biological Learning Lab (CBL), Cambridge, UK} 
+ \explanationdetail{
+  \coloredbullet\ %
+ I built from scratch a novel optimisation procedure that operates on stabilized supralinear networks (SSNs) with multiple fixed-point attractors. The optimized networks display several relevant biological features, and can robustly store and recall memory state that correspond to population firing patterns. In my work, I modeled and tested these systems extensively, and compared them with state-of-the-art approaches used to construct attractor networks.\par
+ }
+%
+ \datedexperience{Research Intern}{2011-2012}
+ \explanation{lab of Prof.~Fred Wolf, MPI for Complex Dynamics and Self Organization G\"ottingen, Germany}
+ \explanationdetail{
+  \coloredbullet\ %
+ Recurrent neural networks (RNNs) can be in a chaotic dynamical regime. In this project,
+starting from a RNN of quadratic integrate and fire neurons, I implemented the computation of the so-called “Lyapunov vectors”, that measure not only the presence of chaos, but also the direction and dimensionality of the most dynamically stable or unstable dimensions. This allows for a more in-depth characterization of the ergodic properties of RNNs.\par
+ }
+ }
+
+\section{Publications}
+    \datedexperience{Formation and computational implications of assemblies in neural circuits}{2022}
+    \explanation{%
+     Christoph Miehl, Sebastian Onasch, \textbf{Dylan Festa}, Julijana Gjorgjieva}
+    \explanationdetail{
+    The Journal of Physiology,%
+    \href{https://doi.org/10.1113/JP282750}{DOI: 10.1113/JP282750}}
+    %
+    \datedexperience{Adaptation of Drosophila larva foraging in response to changes in food resources}{2022}
+    \explanation{%
+     Marina Wosniack, \textbf{Dylan Festa}, Nan Hu, Julijana Gjorgjieva, Jimena Berni}
+    \explanationdetail{
+    eLife,%
+    \href{https://doi.org/10.7554/eLife.75826}{DOI: 10.7554/eLife.75826}}
+    %
+    \datedexperience{Neuronal variability reflects probabilistic inference tuned to natural image statistics}{2021}
+    \explanation{\textbf{Dylan  Festa}, Amir Aschner, Aida Davila, Adam Kohn, Ruben Coen-Cagli}
+    \explanationdetail{
+    Nature Communications,%
+    \href{https://doi.org/10.1038/s41467-021-23838-x}{DOI: 10.1038/s41467-021-23838-x}}
+    %
+    \datedexperience{Analog Memories in a Balanced Rate-Based Network of E-I Neurons}{2014}
+    \explanation{\textbf{Dylan Festa}, Guillaume Hennequin, Máté Lengyel} 
+    \explanationdetail{
+Advances in Neural Information Processing Systems 
+\href{https://proceedings.neurips.cc/paper/2014/file/0a0a0c8aaa00ade50f74a3f0ca981ed7-Paper.pdf}{(NeurIPS)}}
+%
+\section{Teaching and Supervision Experience} 
+
+    \datedexperience{Computational neuroscience course}{2023}
+    \explanation{Teaching assistant $\large($TA$\large)$ for a university course on computational neuroscience, Technical University of Munich.}
+    \explanationdetail{I led the exercise sessions of the course, and helped ideating and grading the final written exams.}
+    \datedexperience{Cajal summer school}{2022}
+    \explanation{Teaching assistant $\large($TA$\large)$ for the Cajal summer school, Champalimaud center of the Unknown, Lisbon, Portugal} 
+    \explanationdetail{I assisted students during tutorials (first week), and then mentored two smaller groups for project work (following two weeks).}
+    \datedexperience{NeuroMatch Academy}{2021} 
+    \explanation{TA for the first Neuromatch virtual summer school in Computational Neuroscience} 
+    \explanationdetail{
+    Quality-assessment of the course material before the beginning of the course, and TA during the course, assisting 10 to 15 students as they worked on their tutorial notebooks.
+    }
+    %
+    \datedexperience{Master Thesis Supervision}{2021}
+    \explanation{Supervision of Master student}
+     \explanationdetail{I supervised the Master student Vanshika Kapoor, for her thesis with title: ``Inferring activity statistics in Stabilized Supralinear Networks''} 
+    %
+    \datedexperience{Student supervisions}{2014}
+    \explanation{University of Cambridge, UK} 
+    \explanationdetail{
+    During the full extent of my Ph.D.~in Cambridge I tutored small groups of students in a module of the 3rd year course “Introduction to Neuroscience”, held at the Engineering Department}
+%
+%Education
+\section{Education} 
+    \datedexperience{Ph.D.~in Computational Neuroscience}{2012-2016} 
+    \explanation{Group of Prof.~M\'at\'e Lengyel, Computational and Biological Learning Lab (CBL), Cambridge, UK} 
+    %
+    \datedexperience{Master degree in Physics}{2008-2011} 
+    \explanation{Università degli Studi di Pisa, Pisa, Italy} 
+    \explanationdetail{\coloredbullet\ %
+    \textbf{Final grade:} 110/110 \emph{cum laude}. \ \  \textbf{Specialization:} Physics of Condensed Matter \par 
+     }
+    \datedexperience{Bachelor degree in Physics}{2005-2008} 
+    \explanation{Università degli Studi di Pisa, Pisa, Italy} 
+    \explanationdetail{\coloredbullet\ %
+    \textbf{Final grade:} 110/110 \emph{cum laude}. \par 
+     }
+     \datedexperience{Diploma}{2000-2005} 
+    \explanation{Liceo Scientifico D.~Alighieri, Matera, Italy} 
+    \explanationdetail{\coloredbullet\ %
+    \textbf{Final grade:} 100/100. \par 
+     }
+%     
+% Skills
+\section{Skills}
+    %
+    \newcommand{\skillone}{\createskill{Programming Languages}{\textbf{\emph{Experienced:}} \ \  Julia \cpshalf Python \cpshalf Matlab \ \ \textbf{\emph{Familiar:}} \ \  \LaTeX \cpshalf OCaML  \cpshalf git \cpshalf Linux systems }}
+    %
+    %
+    \newcommand{\skilltwo}{\createskill{Software}{ Adobe Illustrator \cpshalf Microsoft Office \cpshalf Plexton Offline Spike Sorter }}
+    %
+    \newcommand{\skillthree}{\createskill{Spoken Languages}{\textbf{\emph{Native:}} \ \  Italian \ \ \textbf{\emph{Fluent:}} \ \ English \ \ \textbf{\emph{Beginner:}} \ \  German }}
+    %
+    \createskills{\skillone, \skilltwo,\skillthree} %, \skillfour, \skillfive}
+%
+% Experience
+\section{Extra}
+    \newcommand{\extraone}{%
+    \textbf{2018-2020}  \  \ Co-chair of the Einstein Postdoctoral Association (EPA), Einstein College, Bronx, NY. \par
+    }
+    %
+    \newcommand{\extratwo}{%
+    \textbf{2018}   \  \  NET Impact NYC Service Corps   \ -- \ 
+I volunteered as a pro-bono consultant for a few months, helping a Bronx association to market a K12 school program. The program was based on indoor school farming using hydroponics \par }
+    \newcommand{\listofextras}{\extraone, \extratwo}
+    %
+    \createbullets{\listofextras}
+%
+
+% 2018-2020 
+% Leadership role in the local postdoctoral organization: I helped organizing and planning social events,
+% and I sat in different committees and in the Senate of the college.
+% 2018 NET Impact NYC Service Corps.
+% I volunteered as a pro-bono consultant for a few months, helping a Bronx association marketing a K12
+% school program. The program was centered on indoor school farming, based on hydroponics
+
+%Footnote
+\createfootnote
+\end{document}
