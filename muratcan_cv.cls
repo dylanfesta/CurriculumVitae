@@ -213,5 +213,7 @@ Position: & \@claimedposition \\
 \newcommand\createfootnote{%
   \renewcommand{\footnotesize}{\fontsize{7pt}{11pt}\selectfont}
     \renewcommand\footnoterule{\rule{0.3\linewidth}{0.5pt}}
-    \let\thefootnote\relax\footnote{\emph{last edit: \today}}}
+    %\let\thefootnote\relax\footnote{\emph{last edit: \today}}}
+    \let\thefootnote\relax\footnote{\scriptsize\color{gray}compiled from \LaTeX\ on: \today}}
+
    % \ / \href{https://github.com/muratcankaracabey/latex_cv}{source code}}}
