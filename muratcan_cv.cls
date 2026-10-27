@@ -15,14 +15,13 @@
 \RequirePackage{fontspec}
 \RequirePackage[left=0.75in,top=0.3in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 \RequirePackage{hyperref}
-\RequirePackage{fontawesome}
+\RequirePackage{fontawesome5}
 \RequirePackage{mfirstuc}
 \RequirePackage{ifthen}
 \RequirePackage{lipsum}
 \RequirePackage{array}
 \pagestyle{empty}
-
-\usepackage[bb=boondox,bbscaled=.95,cal=boondoxo]{mathalfa} % for the x.com symbol
+\setlength{\parindent}{0pt} % No first-line indentation anywhere in the CV.
 
 %Setup
 
@@ -38,8 +37,8 @@
 \newcommand*{\setlinkedinaccount}[1]{\def\@linkedinaccount{#1}}
 \newcommand*{\setgithubaccountlink}[1]{\def\@githubaccountlink{#1}}
 \newcommand*{\setgithubaccountname}[1]{\def\@githubaccountname{#1}}
-\newcommand*{\settwitterlink}[1]{\def\@twitterlink{#1}}
-\newcommand*{\settwittername}[1]{\def\@twittername{#1}}
+\newcommand*{\setmastodonlink}[1]{\def\@mastodonlink{#1}}
+\newcommand*{\setmastodonname}[1]{\def\@mastodonname{#1}}
 
 %Setup for coverletter
 
@@ -60,12 +59,16 @@
 % can makebox also be used?
 \newcommand\headerview{
 \begin{minipage}{0.25\linewidth}
-    \profpic{0.4}{images/profilepicture}
+    \profpic{0.08}{images/profilepicture}
 \end{minipage}% 
 \hfill
 \begin{minipage}{0.6\linewidth}
-    \center \name \\[0.05cm] 
-    \contact % address \ mobile \\ mail
+    \centering
+    \small
+    \begin{tabular}{@{}r@{\cps}l@{}}
+        \name & {\footnotesize \dylanorcid} \\[0.05cm]
+        \contact
+    \end{tabular}
 \end{minipage}
 }
 
@@ -74,7 +77,7 @@
 \newsavebox{\picbox}
 \newcommand{\profpic}[2]{%
     \savebox{\picbox}{%
-    \includegraphics[scale=#1]{#2}}% 
+    \includegraphics[scale=#1]{#2}}%
     \tikz\node [draw, circle,%
     line width=4pt, color=white,% 
     minimum width=\wd\picbox,minimum height=\ht\picbox,%
@@ -85,14 +88,13 @@
 %contactsubviews 
     
     
-\newcommand{\linkedinview}{\href{\@linkedinaccount}{\faLinkedinSquare\ \footnotesize linkedin}}
+\newcommand{\linkedinview}{\href{\@linkedinaccount}{\faLinkedin\ \footnotesize linkedin}}
 \newcommand{\githubview}{\href{\@githubaccountlink}{\faGithubSquare\ \footnotesize \@githubaccountname}}
-\newcommand{\twitterview}{\href{\@twitterlink}{$\mathbb{X}$\ \footnotesize \@twittername}}
+\newcommand{\mastodonview}{\href{\@mastodonlink}{\faMastodon\ \footnotesize \@mastodonname}}
 \newcommand{\dylanorcid}{\href{https://orcid.org/0000-0003-3803-1542}{\textcolor{orcidlogocol}{\aiOrcid}~0000-0003-380}}
 
 \newcommand{\name}{%
-    {\large \@firstname \ \textsc{\@lastname} \cps} 
-         {\footnotesize \dylanorcid}
+    {\large \@firstname \ \textsc{\@lastname}}%
 }
 
 
@@ -104,9 +106,8 @@
 % }
 
 \newcommand{\contact}{%
-        {\small \@mail \cps \twitterview \\ 
-        \@mobile \cps \githubview \\ 
-        } % 
+        \@mail & \mastodonview \\
+        \@mobile & \githubview \\
 }
 % Covverletterview
 
@@ -149,23 +150,47 @@ Position: & \@claimedposition \\
 % Textview commands
 
 \newcommand{\experience}[2]{%
-  \mbox { \hspace{1em} \scshape \textbf{#1} }%
+  \mbox{\scshape\textbf{#1}}%
 }
 
 \newcommand{\datetext}[1]{%
 {\itshape  \footnotesize \mdseries  \color{black!60!\@themecolor} #1 } 
 }
 
+\newlength{\experiencegap}
+\setlength{\experiencegap}{0.35em}
+
 \newcommand{\datedexperience}[2]{%
-  \begin{small} \mbox { \hspace{1em} \scshape \textbf{#1} } \end{small} \hfill \datetext{#2}\\[0.01cm] %
+  \par\addvspace{\experiencegap}\noindent
+  {\small\mbox{\scshape\textbf{#1}}}\hfill \datetext{#2}\\*[0.01cm]%
 }
 
 \newcommand{\explanation}[1]{%
-    \mbox { \scshape \hspace{1.2em} \footnotesize #1}\\[0.05cm]
+    \noindent
+    \parbox[t]{\linewidth}{\raggedright\scshape\footnotesize #1}\par\nobreak\vspace{0.05cm}%
 }
 
 \newcommand{\explanationdetail}[1]{%
-    \indent \begin{minipage}{0.96\linewidth} \footnotesize #1 \end{minipage} \\[0.1cm]
+    \noindent\begin{minipage}{\linewidth}\footnotesize #1\end{minipage}\par\vspace{0.1cm}%
+}
+
+% Compact detail bullets: same font and outer spacing as \explanationdetail.
+\newenvironment{explanationitems}{%
+    \par\noindent\begin{minipage}{\linewidth}\footnotesize
+    \begin{list}{\coloredbullet}{%
+        \setlength{\leftmargin}{1.5em}%
+        \setlength{\rightmargin}{0pt}%
+        \setlength{\labelwidth}{0.5em}%
+        \setlength{\labelsep}{0.5em}%
+        \setlength{\itemindent}{0pt}%
+        \setlength{\listparindent}{0pt}%
+        \setlength{\topsep}{0pt}%
+        \setlength{\partopsep}{0pt}%
+        \setlength{\itemsep}{0pt}%
+        \setlength{\parsep}{0pt}%
+    }%
+}{%
+    \end{list}\end{minipage}\par\vspace{0.1cm}%
 }
 
 \newcommand{\itemwithtext}[1]{%
@@ -174,7 +199,7 @@ Position: & \@claimedposition \\
 
 \newcommand{\addblocktext}[2]{%
   \section{#1} 
-  \indent \explanationdetail{\hspace{4ex} #2}
+  \explanationdetail{#2}
 }
 
 \newcommand\createskill[2]{%
